@@ -268,20 +268,6 @@ def runSimulation(w, h):
 
 # This code runs the test cases to check your work
 if __name__ == "__main__":
-    print("\n" + "#"*15 + " WEEK 1 TESTS " +  "#" * 16 + "\n")
-    test.week1Tests()
-
-    ## Uncomment these for Week 2 ##
-    """
-    print("\n" + "#"*15 + " WEEK 2 TESTS " +  "#" * 16 + "\n")
-    test.week2Tests()
-    """
-
-    ## Uncomment these for Week 3 ##
-    """
-    print("\n" + "#"*15 + " WEEK 3 TESTS " +  "#" * 16 + "\n")
-    test.week3Tests()
-    """
 
     ## Finally, run the simulation to test it manually ##
     runSimulation(500, 500)
