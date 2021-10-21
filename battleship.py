@@ -92,6 +92,7 @@ Returns: 2D list of ints
 def emptyGrid(rows, cols):
     grid =[]
     for i in range(rows):
+        # an empty list is created
         boardString=[]
         for j in range(cols):
             boardString.append(1)
