@@ -105,18 +105,18 @@ createShip()
 Parameters: no parameters
 Returns: 2D list of ints
 '''
-def createShip():
-    rows=random.randint(1,8)
-    cols=random.randint(1,8)
-    edge=random.randint(0,1)
-    createShip=[]
-    if edge == 0:
-        for i in range(rows-1,rows+2):
-            createShip.append([i,cols])
-    else:
-        for j in range(cols-1,cols+2):
-            createShip.append([j,rows])
-    return createShip
+# def createShip():
+#     rows=random.randint(1,8)
+#     cols=random.randint(1,8)
+#     edge=random.randint(0,1)
+#     createShip=[]
+#     if edge == 0:
+#         for i in range(rows-1,rows+2):
+#             createShip.append([i,cols])
+#     else:
+#         for j in range(cols-1,cols+2):
+#             createShip.append([j,rows])
+#     return createShip
 
 
 '''
@@ -124,11 +124,11 @@ checkShip(grid, ship)
 Parameters: 2D list of ints ; 2D list of ints
 Returns: bool
 '''
-# def checkShip(grid, ship):
-#     for i in ship:
-#         if grid[i[0]][i[1]]!=EMPTY_UNCLICKED:
-#             return False
-#     return True
+def checkShip(grid, ship):
+    for i in ship:
+        if grid[i[0]][i[1]]!=EMPTY_UNCLICKED:
+            return False
+    return True
 
 
 '''
@@ -421,8 +421,8 @@ if __name__ == "__main__":
     # test.testAddShips()
     # test.testDrawGrid()
     # test.testEmptyGrid()
-    test.testCreateShip()
-    # test.testCheckShip()
+    # test.testCreateShip()
+    test.testCheckShip()
     # test.testAddShips()
     # test.testIsVertical()
     # test.testIsHorizontal()
