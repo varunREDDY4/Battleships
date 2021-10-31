@@ -89,15 +89,15 @@ emptyGrid(rows, cols)
 Parameters: int ; int
 Returns: 2D list of ints
 '''
-def emptyGrid(rows, cols):
-    grid =[]
-    for i in range(rows):
-        # an empty list is created
-        boardString=[]
-        for j in range(cols):
-            boardString.append(1)
-        grid.append(boardString)
-    return grid
+# def emptyGrid(rows, cols):
+#     grid =[]
+#     for i in range(rows):
+#         # an empty list is created
+#         boardString=[]
+#         for j in range(cols):
+#             boardString.append(1)
+#         grid.append(boardString)
+#     return grid
 
 
 '''
@@ -105,18 +105,18 @@ createShip()
 Parameters: no parameters
 Returns: 2D list of ints
 '''
-# def createShip():
-#     rows=random.randint(1,8)
-#     cols=random.randint(1,8)
-#     edge=random.randint(0,1)
-#     createShip=[]
-#     if edge == 0:
-#         for i in range(rows-1,rows+2):
-#             createShip.append([i,cols])
-#     else:
-#         for j in range(cols-1,cols+2):
-#             createShip.append([j,rows])
-#     return createShip
+def createShip():
+    rows=random.randint(1,8)
+    cols=random.randint(1,8)
+    edge=random.randint(0,1)
+    createShip=[]
+    if edge == 0:
+        for i in range(rows-1,rows+2):
+            createShip.append([i,cols])
+    else:
+        for j in range(cols-1,cols+2):
+            createShip.append([j,rows])
+    return createShip
 
 
 '''
@@ -420,8 +420,8 @@ if __name__ == "__main__":
     # test.testCheckShip()
     # test.testAddShips()
     # test.testDrawGrid()
-    test.testEmptyGrid()
-    # test.testCreateShip()
+    # test.testEmptyGrid()
+    test.testCreateShip()
     # test.testCheckShip()
     # test.testAddShips()
     # test.testIsVertical()
