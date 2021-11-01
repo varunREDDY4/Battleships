@@ -280,6 +280,17 @@ Parameters: dict mapping strs to values ; int ; int
 Returns: None
 '''
 def runGameTurn(data, row, col):
+    if data["comp_board"][row][col] == SHIP_CLICKED or data["comp_board"][row][col] == EMPTY_CLICKED:
+        return
+    else:
+        updateBoard(data,data["comp_board"],row,col,"user")
+        # print(row,col)
+    event = getComputerGuess(data["user_board"])
+    print(event)
+    updateBoard(data,data["user_board"],event[0],event[1],"comp")
+    data["current_no_turns"] +=1
+    if data["current_no_turns"] == data["max_no_turns"]:
+        data["winner"] = "draw"
     return
 
 
