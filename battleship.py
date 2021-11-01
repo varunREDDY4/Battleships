@@ -357,20 +357,25 @@ def isGameOver(board):
     return True
 
 
-    
-
-
 '''
 drawGameOver(data, canvas)
 Parameters: dict mapping strs to values ; Tkinter canvas
 Returns: None
 '''
 def drawGameOver(data, canvas):
-    
+    if data["winner"] == "user":
+        canvas.delete("all")
+        canvas.create_text(300,50, text="you won the game",fill="black",font=('Helvetica 18 bold'))
+        canvas.create_text(300,50, text="press enter to restart the game",fill="black",font=('Helvetica 18 bold'))
+    elif data["winner"] == "comp":
+        canvas.delete("all")
+        canvas.create_text(300,50,text="you lost the game", fill="black", font=('Helventica 18 bold'))
+        canvas.create_text(300,50, text="press enter to restart the game",fill="black",font=('Helvetica 18 bold'))
+    elif data["winner"] == "draw":
+        canvas.delete("all")
+        canvas.create_text(300,100,text="out of moves and it is a draw", fill="black",font=('Helvetica 18 bold'))
+        canvas.create_text(300,50, text="press enter to restart the game",fill="black",font=('Helvetica 18 bold'))
     return
-
-    
-
 
 ### SIMULATION FRAMEWORK ###
 
