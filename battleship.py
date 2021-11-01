@@ -49,7 +49,10 @@ Parameters: dict mapping strs to values ; Tkinter canvas ; Tkinter canvas
 Returns: None
 '''
 def makeView(data, userCanvas, compCanvas):
-    
+    drawGrid(data,userCanvas,data["user_board"],True)
+    drawShip(data,userCanvas,data["temp_ship"])
+    drawGrid(data,compCanvas,data["comp_board"],False)
+    drawGameOver(data,userCanvas)
     return
 
 
