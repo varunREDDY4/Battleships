@@ -62,7 +62,15 @@ Parameters: int ; int
 Returns: 2D list of ints
 '''
 def emptyGrid(rows, cols):
-    return
+    grid =[]
+    for i in range(rows):
+        # an empty list is created
+        boardString=[]
+        for j in range(cols):
+            boardString.append(1)
+        grid.append(boardString)
+    return grid
+
 
 
 '''
@@ -71,7 +79,17 @@ Parameters: no parameters
 Returns: 2D list of ints
 '''
 def createShip():
-    return
+    rows=random.randint(1,8)
+    cols=random.randint(1,8)
+    edge=random.randint(0,1)
+    createShip=[]
+    if edge == 0:
+        for i in range(rows-1,rows+2):
+            createShip.append([i,cols])
+    else:
+        for j in range(cols-1,cols+2):
+            createShip.append([j,rows])
+    return createShip
 
 
 '''
@@ -80,7 +98,10 @@ Parameters: 2D list of ints ; 2D list of ints
 Returns: bool
 '''
 def checkShip(grid, ship):
-    return
+    for i in ship:
+        if grid[i[0]][i[1]]!=EMPTY_UNCLICKED:
+            return False
+    return True
 
 
 '''
@@ -89,7 +110,16 @@ Parameters: 2D list of ints ; int
 Returns: 2D list of ints
 '''
 def addShips(grid, numShips):
-    return
+    ship_count=0
+    while(ship_count<numShips):
+        ship=createShip()
+        if checkShip(grid,ship):
+            for i in ship:
+                grid[i[0]][i[1]] = SHIP_UNCLICKED
+            ship_count+=1
+        # print("add ships is executing")
+    return grid
+    
 
 
 '''
@@ -271,3 +301,4 @@ if __name__ == "__main__":
 
     ## Finally, run the simulation to test it manually ##
     # runSimulation(500, 500)
+    test.testAddShips()
