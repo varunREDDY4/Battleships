@@ -128,6 +128,19 @@ Parameters: dict mapping strs to values ; Tkinter canvas ; 2D list of ints ; boo
 Returns: None
 '''
 def drawGrid(data, canvas, grid, showShips):
+    x = data["cellsize"]
+    for row in range(data["no_of_rows"]):
+        for col in range(data["no_of_cols"]):
+            if grid[row][col] == SHIP_UNCLICKED:
+                canvas.create_rectangle(x*col,x*row,x*(col+1),x*(row+1),fill="yellow")
+            elif grid[row][col] == EMPTY_UNCLICKED:
+                canvas.create_rectangle(x*col,x*row,x*(col+1),x*(row+1),fill="blue")
+            elif grid[row][col] == SHIP_CLICKED:
+                canvas.create_rectangle(x*col,x*row,x*(col+1),x*(row+1),fill="red")
+            elif grid[row][col] == EMPTY_CLICKED:
+                canvas.create_rectangle(x*col,x*row,x*(col+1),x*(row+1),fill="white")
+            if grid[row][col] == SHIP_UNCLICKED and showShips == False:
+                canvas.create_rectangle(x*col,x*row,x*(col+1),x*(row+1),fill="blue")
     return
 
 
@@ -139,7 +152,12 @@ Parameters: 2D list of ints
 Returns: bool
 '''
 def isVertical(ship):
-    return
+    ship.sort()
+    if ship[0][1] == ship[1][1] == ship[2][1]:
+        if ship[0][0]+1 == ship[1][0] == ship[2][0]-1:
+            return True 
+    return False
+    
 
 
 '''
@@ -301,4 +319,4 @@ if __name__ == "__main__":
 
     ## Finally, run the simulation to test it manually ##
     # runSimulation(500, 500)
-    test.testAddShips()
+    test.testIsVertical()
