@@ -263,6 +263,14 @@ Parameters: dict mapping strs to values ; 2D list of ints ; int ; int ; str
 Returns: None
 '''
 def updateBoard(data, board, row, col, player):
+    x=board[row][col]
+    if x == SHIP_UNCLICKED:
+        x = SHIP_CLICKED
+    elif x == EMPTY_UNCLICKED:
+        x = EMPTY_CLICKED
+    board[row][col] = x
+    if isGameOver(board):
+        data["winner"] = player
     return
 
 
