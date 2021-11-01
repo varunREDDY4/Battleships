@@ -49,10 +49,7 @@ Parameters: dict mapping strs to values ; Tkinter canvas ; Tkinter canvas
 Returns: None
 '''
 def makeView(data, userCanvas, compCanvas):
-    drawGrid(data,userCanvas,data["user_board"],True)
-    drawShip(data,userCanvas,data["temp_ship"])
-    drawGrid(data,compCanvas,data["comp_board"],False)
-    drawGameOver(data,userCanvas)
+    
     return
 
 
@@ -62,8 +59,7 @@ Parameters: dict mapping strs to values ; key event object
 Returns: None
 '''
 def keyPressed(data, event):
-    if event.keycode == 13:
-        makeModel(data)
+    
     pass
 
 
@@ -73,14 +69,7 @@ Parameters: dict mapping strs to values ; mouse event object ; 2D list of ints
 Returns: None
 '''
 def mousePressed(data, event, board):
-    if data["winner"] !=None:
-        return
-    s = getClickedCell(data,event)
-    if board == "user":
-        clickUserBoard(data,s[0],s[1])
-    else:
-         
-        runGameTurn(data,s[0],s[1])
+   
     
     pass
 
@@ -347,11 +336,7 @@ Parameters: 2D list of ints
 Returns: bool
 '''
 def isGameOver(board):
-     for row in range(len(board)):
-        for col in range(len(board)):
-            if board[row][col]== SHIP_UNCLICKED:
-                return False
-        return True
+     return
 
 
     
