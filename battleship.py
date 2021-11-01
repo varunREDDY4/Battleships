@@ -242,6 +242,16 @@ Parameters: dict mapping strs to values ; int ; int
 Returns: None
 '''
 def clickUserBoard(data, row, col):
+    if data["user_ship"] == 5:
+            return
+    if[row,col] in data["temp_ship"]:
+        return
+    data["temp_ship"].append([row,col])
+
+    if len(data["temp_ship"]) ==3:
+        placeShip(data)
+    if data["user_ship"] == 5:
+        print("you can start the game")
     return
 
 
