@@ -348,7 +348,13 @@ Parameters: 2D list of ints
 Returns: bool
 '''
 def isGameOver(board):
-     return
+
+     
+    for row in range(len(board)):
+        for col in range(len(board)):
+            if board[row][col]== SHIP_UNCLICKED:
+                return False
+    return True
 
 
     
@@ -360,6 +366,7 @@ Parameters: dict mapping strs to values ; Tkinter canvas
 Returns: None
 '''
 def drawGameOver(data, canvas):
+    
     return
 
     
