@@ -25,6 +25,21 @@ Parameters: dict mapping strs to values
 Returns: None
 '''
 def makeModel(data):
+    data["no_of_rows"]=10
+    data["no_of_cols"]=10
+    data["boardsize"]=500
+    data["cellsize"]=data["boardsize"]/data["no_of_cols"]
+    data["no_of_ships_comp"]=5
+    data["no_of_ships_user"]=5
+    data["comp_board"]=emptyGrid(data["no_of_rows"],data["no_of_cols"])
+    data["user_board"]=emptyGrid(data["no_of_rows"],data["no_of_cols"])
+    # data["comp_board"]=addShips(data["comp_board"],data["no_of_ships_comp"])
+    data["temp_ship"]=[ ] 
+    data["user_ship"] = 0
+    data["winner"] = None
+    data["max_no_turns"] = 50 
+    data["current_no_turns"] = 0
+
     return
 
 
@@ -34,6 +49,10 @@ Parameters: dict mapping strs to values ; Tkinter canvas ; Tkinter canvas
 Returns: None
 '''
 def makeView(data, userCanvas, compCanvas):
+    drawGrid(data,userCanvas,data["user_board"],True)
+    drawShip(data,userCanvas,data["temp_ship"])
+    drawGrid(data,compCanvas,data["comp_board"],False)
+    drawGameOver(data,userCanvas)
     return
 
 
@@ -43,6 +62,8 @@ Parameters: dict mapping strs to values ; key event object
 Returns: None
 '''
 def keyPressed(data, event):
+    if event.keycode == 13:
+        makeModel(data)
     pass
 
 
@@ -52,6 +73,15 @@ Parameters: dict mapping strs to values ; mouse event object ; 2D list of ints
 Returns: None
 '''
 def mousePressed(data, event, board):
+    if data["winner"] !=None:
+        return
+    s = getClickedCell(data,event)
+    if board == "user":
+        clickUserBoard(data,s[0],s[1])
+    else:
+         
+        runGameTurn(data,s[0],s[1])
+    
     pass
 
 #### WEEK 1 ####
@@ -317,7 +347,14 @@ Parameters: 2D list of ints
 Returns: bool
 '''
 def isGameOver(board):
-    return
+     for row in range(len(board)):
+        for col in range(len(board)):
+            if board[row][col]== SHIP_UNCLICKED:
+                return False
+        return True
+
+
+    
 
 
 '''
@@ -327,6 +364,8 @@ Returns: None
 '''
 def drawGameOver(data, canvas):
     return
+
+    
 
 
 ### SIMULATION FRAMEWORK ###
